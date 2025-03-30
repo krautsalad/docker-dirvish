@@ -67,38 +67,6 @@ docker exec dirvish dirvish --init --vault=server1.krautsalad.com
 
 *Note*: Dirvish connects via SSH using the SSH settings and public keys mounted from your host (in the example, from the root user).
 
-### Dirvish Settings
-
-Dirvish is pre-configured with the following settings:
-
-```txt
-# master.conf
-bank:
-  /var/lib/dirvish
-image-default: %Y%m%d
-image-temp: latest
-index: bzip2
-log: bzip2
-rsync-option:
-  --human-readable
-sparse: true
-speed-limit: 2500
-summary: long
-whole-file: 1
-xdev: 0
-zxfer: 0
-Runall:
-expire-default: +14 days
-expire-rule:
-# Format: min hour dmon month dweek time
-# Keep 1 backup of each day for 14 days
-  * * * * * +14 days
-# Keep 1 backup of each week for 3 months
-  * * * * 1 +3 months
-```
-
-To override these default settings, set options inside your vault configuration or mount your custom master configuration file at /etc/dirvish/master.conf.
-
 ## Source Code
 
 You can find the full source code on [GitHub](https://github.com/krautsalad/docker-dirvish).
