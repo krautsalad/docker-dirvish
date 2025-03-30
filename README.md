@@ -43,7 +43,7 @@ At runtime, the container's cron job executes two commands in sequence:
 
 Before a vault can be used by Dirvish, you must manually initialize it. For each server you want to back up, create a directory under your vaults directory (e.g. `/mnt/vaults`) with the same name as the server (e.g. `server1.krautsalad.com`). Inside that directory, create a folder named `dirvish`, and within that folder, create a Dirvish configuration file called `default.conf` with content similar to the following:
 
-```
+```text
 # default.conf
 client: server1.krautsalad.com
 tree: /
@@ -61,7 +61,7 @@ exclude:
 
 After setting up the configuration file, initialize the vault by running:
 
-```
+```shell
 docker exec dirvish dirvish --init --vault=server1.krautsalad.com
 ```
 
@@ -71,7 +71,7 @@ docker exec dirvish dirvish --init --vault=server1.krautsalad.com
 
 Dirvish is pre-configured with the following settings:
 
-```
+```text
 # master.conf
 bank:
   /var/lib/dirvish
