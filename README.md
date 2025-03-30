@@ -22,7 +22,7 @@ services:
     image: krautsalad/dirvish
     restart: unless-stopped
     volumes:
-      - /mnt/vaults:/var/lib/dirvish
+      - ./data:/var/lib/dirvish
       - /root/.ssh:/root/.ssh
 ```
 
@@ -41,7 +41,7 @@ At runtime, the container's cron job executes two commands in sequence:
 
 ### Initial Setup
 
-Before a vault can be used by Dirvish, you must manually initialize it. For each server you want to back up, create a directory under your vaults directory (e.g. `/mnt/vaults`) with the same name as the server (e.g. `server1.krautsalad.com`). Inside that directory, create a folder named `dirvish`, and within that folder, create a Dirvish configuration file called `default.conf` with content similar to the following:
+Before a vault can be used by Dirvish, you must manually initialize it. For each server you want to back up, create a directory under your vaults directory (e.g. `./data`) with the same name as the server (e.g. `server1.krautsalad.com`). Inside that directory, create a folder named `dirvish`, and within that folder, create a Dirvish configuration file called `default.conf` with content similar to the following:
 
 ```txt
 # default.conf
@@ -66,6 +66,8 @@ docker exec dirvish dirvish --init --vault=server1.krautsalad.com
 ```
 
 *Note*: Dirvish connects via SSH using the SSH settings and public keys mounted from your host (in the example, from the root user).
+
+*Note*: If you're backing up the host itself, consider excluding the vaults directory in your vault configuration to avoid backing up unnecessary or recursive data.
 
 ## Source Code
 
