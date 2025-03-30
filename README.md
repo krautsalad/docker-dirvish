@@ -17,8 +17,8 @@ services:
       SCHEDULE: 0 3 * * *
       TZ: Europe/Berlin
       VAULTS: >-
-        server1.krautsalad.com,
-        server2.krautsalad.com
+        server1.example.com,
+        server2.example.com
     image: krautsalad/dirvish
     restart: unless-stopped
     volumes:
@@ -29,7 +29,7 @@ services:
 ### Environment Variables
 
 - `SCHEDULE`: Cron schedule for running the backup (default: `0 0 * * *`).
-- `TZ`: Timezone setting (default: UTC).
+- `TZ`: Timezone setting (default: `UTC`).
 - `VAULTS`: Comma-separated list of vault names for Dirvish to manage (default: empty).
 
 ## How it works
