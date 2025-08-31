@@ -5,7 +5,7 @@ ENV PERL_MM_USE_DEFAULT=1
 
 COPY dirvish/installer.sh /tmp/installer.sh
 COPY dirvish/master.conf /etc/dirvish/master.conf
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 RUN apk update && \
     apk add --no-cache busybox-suid findutils perl perl-utils openssh-client rsync tzdata && \
